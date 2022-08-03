@@ -16,10 +16,10 @@ public class Main {
         employees[9] = new Employee("Капитан Джек Воробей", 1, 37348);
 
         printAllEmployyes(employees);
-        System.out.println(getSalarySummorize(employees));
+        System.out.println("Суммарная зарплата сотрудников = " + getSalarySummorize(employees));
         Employee loserEmployer = findMinimalSalary(employees);
         Employee luckyEmployer = findMaximalSalary(employees);
-        System.out.println(getAverageSalary(employees));
+        System.out.println("Средняя зарплата сотрудников = " + getAverageSalary(employees));
         printEmployeesNames(employees);
     }
 
