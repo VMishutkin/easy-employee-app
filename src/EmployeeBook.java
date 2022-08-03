@@ -234,7 +234,7 @@ public class EmployeeBook {
         }
         System.out.println("Зарплаты проиндексированы на " + procentIncrease +" процентов");
     }
-
+//
     public boolean changeSalary(String employeeName, int newSalary) {
         //находим сотрудника, вызываем его сеттер зарплаты, возвращаем true если сотрудник найден, false если не удалось найти.
         for (int i = 0; i < employees.length; i++) {
