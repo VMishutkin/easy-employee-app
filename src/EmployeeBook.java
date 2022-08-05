@@ -13,7 +13,10 @@ public class EmployeeBook {
         this.bookSize = department.length;
     }
     public void addEmployee(String name, int department, int salary){
-
+        if(name==null){
+            System.out.println("Введите имя сотрудника");
+            return;
+        }
         Employee newEmployee= new Employee(name, department, salary);// создаем нового сотрудника
         Employee[] bookBeforExpansion = employees; // сохраняем указатель на старый массив до изменения размера
         employees = new Employee[++bookSize];// создаем новый массив с размером на 1 больше
@@ -27,12 +30,13 @@ public class EmployeeBook {
     public boolean deleteEmployee(String deletingEmployeeName){
         boolean isDeleted = false;//переменная которая указывает получилось ли найти сотрудника с соответствующим именем для удаления
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getName()==deletingEmployeeName){
+            if (employees[i].getName().equals(deletingEmployeeName)){
                 System.out.println("Сотрудник " + employees[i].getName() + " удален");
                 employees[i]=null;// если нашли сотрудника обнуляем указатель на него
                 isDeleted= true;
             }
         }
+
         if(isDeleted){
             // создаем новый массив размером на 1 меньше
             Employee[] bookBeforDeleting = employees;
@@ -188,11 +192,11 @@ public class EmployeeBook {
     public boolean getDepartmentInfoAndIndexing(int departmentID, int indexingSize) {
         //создаем новый Employeebook из массива сотрудников отдела, проводим требуемые в задаче операции.
         System.out.println("Находим информацию по отделу " + departmentID);
-        if(getDepartment(departmentID)==null){
+        if(getDepartmentsEmployees(departmentID)==null){
             System.out.println("Нет информации по отделу" + departmentID);
             return false;
         }else {
-            EmployeeBook department = new EmployeeBook(getDepartment(departmentID));
+            EmployeeBook department = new EmployeeBook(getDepartmentsEmployees(departmentID));
             department.findMinimalSalary();
             department.findMaximalSalary();
             department.getSalarySummorize();
@@ -203,7 +207,7 @@ public class EmployeeBook {
         }
     }
 
-    private Employee[] getDepartment(int departmentID) {
+    private Employee[] getDepartmentsEmployees(int departmentID) {
         //Определяем сколько сотрудников в отделе
         int departmentSize=0;
         for (int i = 0; i < employees.length; i++) {
@@ -238,7 +242,7 @@ public class EmployeeBook {
     public boolean changeSalary(String employeeName, int newSalary) {
         //находим сотрудника, вызываем его сеттер зарплаты, возвращаем true если сотрудник найден, false если не удалось найти.
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getName() == employeeName){
+            if (employees[i].getName().equals(employeeName)){
                 employees[i].setSalary(newSalary);
                 System.out.println("Зарплата сотрудника " + employees[i].getName() + " изменена на " + newSalary + " рублей");
 
@@ -252,7 +256,7 @@ public class EmployeeBook {
     public boolean changeDepartment(String employeeName, int newDepartmentId) {
         //находим сотрудника, вызываем его сеттер зарплаты, возвращаем true если сотрудник найден, false если не удалось найти.
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getName() == employeeName){
+            if (employees[i].getName().equals(employeeName)){
                 employees[i].setDepartment(newDepartmentId);
                 System.out.println("Сотрудник " + employees[i].getName() + " переведен в " + newDepartmentId + " отдел");
                 return true;

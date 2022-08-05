@@ -12,6 +12,8 @@ public class Main {
         employeeBook.addEmployee("Васильев Василий Иванович", 3, 24677);
         employeeBook.addEmployee("Иванов Иван Иванович", 4, 75899);
         employeeBook.addEmployee("Капитан Джек Воробей", 1, 37348);
+        employeeBook.addEmployee(null, 3, 23521);
+        employeeBook.printAllEmployeesInfo();
         employeeBook.getDepartmentInfoAndIndexing(1,15);
 //        Для тестирования методов
 //        employeeBook.indexingSalaries(8);
